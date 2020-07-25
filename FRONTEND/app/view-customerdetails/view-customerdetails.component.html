@@ -1,0 +1,26 @@
+<section class="col-md-4 mx-auto">
+<div *ngIf="showcustomerinfo==undefined">
+<form name="form1" #f="ngForm" (ngSubmit)="getuserinfo()" novalidate class="feedback-form">
+           
+    <div class="mt-2 text-center">
+     Customerid:  <input type="number" id="customerid" class="form-control" name="customerid" placeholder="customerid" required #modelcard="ngModel" [(ngModel)]="customerid"/>
+      <input type="submit" value="submit" [disabled]="!f.valid" class="btn btn-primary"/></div>
+  </form>
+</div>
+  <div *ngIf="showcustomerinfo">
+  <p class="bg-success text-white text-center"><small>Customer Information <i class="fa fa-check-circle"></i> </small></p>
+         <p>Full Name: {{customerinfo.fullName}}</p>
+         <p>Email: {{customerinfo.emailAddress}}</p>
+         <p>Phone Number: {{customerinfo.phoneNumber}}</p>
+         <p>Address: {{customerinfo.address}}</p>
+         <p>City: {{customerinfo.city}}</p>
+         <p>Zipcode: {{customerinfo.zipCode}}</p>
+         <p>Country: {{customerinfo.country}}</p>
+         <form name="form" #f1="ngForm" (ngSubmit)="gotoupdate('aupdateuserprofile')" novalidate class="feedback-form">
+           <input type="submit" value="Update" [disabled]="!f1.valid"class="btn btn-primary"/>
+         </form>
+         <router-outlet></router-outlet>
+      </div>
+</section>
+          
+      
